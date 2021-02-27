@@ -63,14 +63,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 extension SceneDelegate: LSUniversalDelegate {
-    
+
     func showDisplayNameAlert(_ alertController: UIAlertController?) {
-        guard let alertController = alertController else { return }
-        print (#function)
-//        present(alertController, animated: false, completion: nil)
-        /**
-         Present the alertController, here
-         **/
+        present(alertController)
     }
     
     func displayConsent(with description: LSConsentDescription?) {
@@ -89,42 +84,43 @@ extension SceneDelegate: LSUniversalDelegate {
         controller.addAction(UIAlertAction(title: description?.agreeLabel, style: .default, handler: { _ in
             description?.consent?(true)
         }))
-        /**
-         Display the controller in your current view hierarchy
-         **/
+        present(controller)
     }
     
     func connectionEvent(_ status: lsConnectionStatus_t) {
-        DispatchQueue.main.async {
-            print (#function, #line, status)
-            switch status {
-                case .callActive:
-                    guard let vc = sdk.callViewController else { return }
-                    self.window?.rootViewController?
-                        .present(vc, animated: false, completion: nil)
-                case .disconnecting:
-//                    guard let vc = self.sdk.callViewController else { return }
-                    self.window?.rootViewController?
-                        .dismiss(animated: false, completion: nil)
-                /**
-                 Remove self.lsUniversal.callViewController from your view hierarchy
-                 **/
-                default:
-                    break
-            }
+        //            print (#function, #line, "\(status)", status.rawValue)
+        switch status {
+        case .callActive:
+            present(sdk.callViewController)
+        case .disconnecting:
+            dismissPresentedViewControler()
+        default:
+            break
         }
     }
     
     func connectionError(_ error: lsConnectionError_t) {
-        DispatchQueue.main.async {
-            switch error {
-                default:
-                    print (#function, #line, error)
-            }
-        }
+        print (#function, #line, "\(error)", error.rawValue)
     }
     
     func callReport(_ callEnd: LSCallReport) {
-        print (#function, #line)
+        print (#function, #line, callEnd)
     }
+}
+
+extension SceneDelegate {
+    
+    func present (_ viewController: UIViewController?, animated: Bool = false) {
+        guard let viewController = viewController else { return }
+        DispatchQueue.main.async {
+            self.window?.rootViewController?.present(viewController, animated: animated, completion: nil)
+        }
+    }
+ 
+    func dismissPresentedViewControler() {
+        DispatchQueue.main.async {
+            self.window?.rootViewController?.dismiss(animated: false, completion: nil)
+        }
+    }
+    
 }

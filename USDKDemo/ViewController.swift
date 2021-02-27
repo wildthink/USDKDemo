@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var pinField: UITextField!
     
     var url_s: String? =
-    "https://guest.sightcall.com/call/b7cdc700d817ddf86f143675340d0f7a15b46110?pin=699274"
+        "https://guest.sightcall.com/call/b7cdc700d817ddf86f143675340d0f7a15b46110?pin=699274"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,7 @@ class ViewController: UIViewController {
 
     @IBAction
     func activate() {
-        if let url_p = UIPasteboard.general.string ?? self.url_s
-        {
+        if let url_p = UIPasteboard.general.string ?? self.url_s {
             print (#function, url_p)
             sdk.start(with: url_p)
         }

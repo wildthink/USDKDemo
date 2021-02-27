@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This permission is required for sharing images from the gallery.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This permission is required for starting the audio capture.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>This permission is required for starting the video capture.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This permission is used in response to an Agent&apos;s request.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -24,10 +16,31 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>sightcall</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sightcall</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This permission is required for starting the video capture.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This permission is used in response to an Agent's request.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This permission is required for starting the audio capture.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This permission is required for sharing images from the gallery.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
