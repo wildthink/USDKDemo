@@ -23,7 +23,8 @@ class ViewController: UIViewController {
     func activate() {
         if let url_p = UIPasteboard.general.string ?? self.url_s {
             print (#function, url_p)
-            sdk.start(with: url_p)
+            sightCall?.start(with: url_p)
         }
     }
 }
+

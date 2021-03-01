@@ -9,7 +9,7 @@ import Foundation
 import LSUniversalSDK
 
 public protocol SightCallManager {
-    var sightCall: SightCallSDK { get }
+    var sightCall: SightCallSDK! { get }
 }
 
 
@@ -93,3 +93,33 @@ extension SightCallSDK {
     
 }
 
+// MARK: UIViewController Extenstion
+
+public extension UIViewController {
+    var sightCall: SightCallSDK? {
+        var target: UIResponder? = self
+        while target != nil {
+//            print (#function, target?.className ?? "<Responder>")
+            if let mgr = target as? SightCallManager {
+                return mgr.sightCall
+            }
+            if let scene = target as? UIWindowScene,
+               let mgr = scene.delegate as? SightCallManager {
+                return mgr.sightCall
+            }
+            target = target?.next
+        }
+        return nil
+    }
+}
+
+
+public extension NSObject {
+    var className: String {
+        return String(describing: type(of: self))
+    }
+    
+    class var className: String {
+        return String(describing: self)
+    }
+}

@@ -9,12 +9,10 @@ import UIKit
 import LSUniversalSDK
 
 
-var sdk: SightCallSDK!
-
-
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, SightCallManager {    
 
     var window: UIWindow?
+    var sightCall: SightCallSDK!
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -22,17 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        sdk = SightCallSDK(window: window)
+        sightCall = SightCallSDK(window: window)
     }
 
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         guard let url = userActivity.webpageURL else { return }
-        sdk.start(with: url)
+        sightCall.start(with: url)
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else { return }
-        sdk.start(with: url)
+        sightCall.start(with: url)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -65,69 +63,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
-/*
-extension SceneDelegate: LSUniversalDelegate {
-
-    func showDisplayNameAlert(_ alertController: UIAlertController?) {
-        present(alertController)
-    }
-    
-    func displayConsent(with description: LSConsentDescription?) {
-        let controller = UIAlertController(title: description?.title, message: description?.message, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: description?.cancelLabel, style: .cancel, handler: { _ in
-            description?.consent?(false)
-        }))
-        controller.addAction(UIAlertAction(title: description?.eulaURL, style: .default, handler: { _ in
-            guard let urlString = description?.eulaURL,
-                  let url = URL(string: urlString)
-            else { return }
-            /**
-             Show the content of the url page
-             **/
-        }))
-        controller.addAction(UIAlertAction(title: description?.agreeLabel, style: .default, handler: { _ in
-            description?.consent?(true)
-        }))
-        present(controller)
-    }
-    
-    func connectionEvent(_ status: lsConnectionStatus_t) {
-        //            print (#function, #line, "\(status)", status.rawValue)
-        switch status {
-        case .callActive:
-            present(sdk.callViewController)
-        case .disconnecting:
-            dismissPresentedViewControler()
-        default:
-            break
-        }
-    }
-    
-    func connectionError(_ error: lsConnectionError_t) {
-        print (#function, #line, "\(error)", error.rawValue)
-    }
-    
-    func callReport(_ callEnd: LSCallReport) {
-        print (#function, #line, callEnd)
-    }
-}
-
-extension SceneDelegate {
-    
-    func present (_ viewController: UIViewController?, animated: Bool = false) {
-        guard let viewController = viewController else { return }
-        DispatchQueue.main.async {
-            self.window?.rootViewController?.present(viewController, animated: animated, completion: nil)
-        }
-    }
- 
-    func dismissPresentedViewControler() {
-        DispatchQueue.main.async {
-            self.window?.rootViewController?.dismiss(animated: false, completion: nil)
-        }
-    }
-    
-}
-*/
-

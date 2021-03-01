@@ -23,7 +23,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHF-Tj-JDB">
-                                <rect key="frame" x="177.5" y="502" width="59" height="30"/>
+                                <rect key="frame" x="167" y="502" width="80" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="D0u-eB-SK9"/>
+                                    <constraint firstAttribute="width" constant="80" id="n9P-tC-6Ch"/>
+                                </constraints>
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="activate" destination="BYZ-38-t0r" eventType="touchUpInside" id="lK6-Au-Sey"/>
