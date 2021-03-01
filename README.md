@@ -108,25 +108,51 @@ If you need to be able to continue the call on background, you should setup the 
 
 ### Instantiation
 
-First, import `LSUniversalSDK` and create a `SightCallSDK` variable:
+First, import `LSUniversalSDK`, have your `SceneDelegate` adopt the `SightCallManager` protocol and initialize the `sightCall` variable:
 
 ```swift
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, SightCallManager {    
+
+    var window: UIWindow?
+    var sightCall: SightCallSDK!
+...
+
 func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let _ = (scene as? UIWindowScene),
   		    let window = window
     else { return }
-    sightCallSDK = SightCallSDK(window: window)
+    sightCall = SightCallSDK(window: window)
     /**
     **/
 }
 ```
 
- Then call `start:` providing the start URL. This, usually, takes place in SceneDelegate:
+ Add a call to `start:` with the start with a specified URL. This, usually, takes place in SceneDelegate:
 
 ```swift
-func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-    guard let url = userActivity.webpageURL else { return }
-    sightCallSDK?.start(with: url)
+  func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+      guard let url = userActivity.webpageURL else { return }
+      sightCall.start(with: url)
+  }
+
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+      guard let url = URLContexts.first?.url else { return }
+      sightCall.start(with: url)
+  }
+```
+
+#### Alternate SightCall Start
+
+As an alternative, you could start up a SightCall session from within any UIViewController through the convenience `sightCall` getter.
+
+``` swift
+class ViewController: UIViewController {
+    @IBAction
+    func activate() {
+        if let url_p = UIPasteboard.general.string {
+            sightCall?.start(with: url_p)
+        }
+    }
 }
 ```
 
