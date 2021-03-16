@@ -2,7 +2,7 @@
 
 # SightCall iOS SDK
 
-This SDK is dedicated to Sightcall customers. It is designed to be integrated into your existing app flow and bring seamless access to the Sightcall experience.
+This SDK is provided for Sightcall customers. It is designed to be integrated into your existing app flow and bring seamless access to the Sightcall experience.
 
 > NOTE: To fully utilize this SDK you must be a registered client with SightCall.
 >
@@ -15,14 +15,14 @@ The SightCallSDK is designed to enable you, the developer, to easily integrate t
 
 ## Account Setup
 
-> NOTE: Apple's Safari Browser is NOT currently supported, use Firefox or Chrome instead and install the SigghtCall browser plugin as directed.
+> NOTE: Apple's Safari Browser is NOT currently supported, use Firefox or Chrome instead and install the SightCall browser plugin as directed.
 >
 
 #### SightCall Account
 
-Log into https://admin.sightcall.com/ and create a `agent user` and `use case`.
+To use the SDK you must first set up your account with SightCall. Refer to the detailed documentation on fully managing your account but for this example these are the essential steps.
 
-TODO: Visual aid
+Log into https://admin.sightcall.com/ and create a `agent user` and `use case`.
 
 - Admin: TENANT: Users: Desktop Agents
 - Admin: TENANT: Use Cases: Use Cases CODE
@@ -50,25 +50,27 @@ https://guest.sightcall.com/call/b7cdc700d817ddf86f143675340d0f7a15b461010?pin=1
 > NOTE: Your domain must be properly configured to support Apple Deeplinks for the URL to be handed off to your application. If you are testing using the `guest.sightcall.com` domain then you can use the pasteboard to avoid having to manually enter the URL into your application.
 >
 
-## Project Configuration
+## Xcode Project Configuration
+
+### Create an iOS application in Xcode
+
+Either create a new iOS application or grab one of your own.
 
 ### Installation with CocoaPods
 
-[CocoaPods](https://cocoapods.org/) is the easiest way to get started (if you're new to CocoaPods, check out their [getting started documentation](https://guides.cocoapods.org/using/getting-started.html).)
-
-To integrate the Sightcall sdk into your Xcode project using CocoaPods, specify it in your `Podfile`:
+Using [CocoaPods](https://cocoapods.org/) is the easiest way to get started (if you're new to CocoaPods, check out their [getting started documentation](https://guides.cocoapods.org/using/getting-started.html)). Set up your project to use `cocoapods`. Then integrate the Sightcall sdk into your  project by adding the following framework to your application target in your `Podfile`:
 
 ```shell
     pod 'LSUniversalSDK', :git => 'https://github.com/sightcall/iOS-UniversalSDK.git'
 ```
 
-### Xcode Configuration
+### Configuration
 
 Once you have created your project you will need to set a number of application settings.
 
 #### Permissions
 
-The Framework requires some permissions to be used and must be set in the App's `Info.plist`.
+The Framework requires some permissions to be used and must be set in the App's `Info.plist`. Each of the following options can be typed in or simply scroll down to the `Privacy` settings after adding a new top-level item to the `Information Property List`.
 
 * **NSLocationWhenInUseUsageDescription** This permission is used in response to an Agent's request.
 
@@ -78,11 +80,19 @@ The Framework requires some permissions to be used and must be set in the App's 
 
 * **NSPhotoLibraryUsageDescription** This permission is required for sharing images from the gallery.
 
-#### Entitlements
+![image-20210315113139337](./README.assets/image-20210315113139337.png)
 
-##### Universal link
+#### Capabilities
 
-In order to setup universal link, some domains should be added to the **Associated Domains** section (in Signing and  Capabilities of your target). 
+To fully utilize the SDK you should add `Associated Domains` and `Background Modes` Capabilities.
+
+Start by selecting your application's TARGET. Then select the `Signing & Capabilities` tab (#1) and add a desired capability (#2) and choose it (#3) from the popup. The two of interest are the `Associated Domains` (#3a) and `Background Modes` (#3b).
+
+<img src="./README.assets/image-20210312132954487.png" style="width:80%" />
+
+##### Universal links
+
+To setup your universal links, your domains should be added to the **Associated Domains** section (in Signing and  Capabilities of your target). (Custom URL schemes are no longer recommended due to security concerns. Prefer Universal Links instead)
 Common domains are usually: 
 
 * **applinks:guest.sightcall.com**
@@ -90,12 +100,9 @@ Common domains are usually:
 
 > Note: Depending on your use case, you may need specific domains. Don't forget to ask your SightCall contact for them.
 
-##### Deeplink
+<img src="./README.assets/image-20210312134719391.png" alt="image-20210312134719391" style="width:80%;" />
 
-When user comes from the guest webpage, a deeplink can be displayed to open your application. So, at least, one scheme should be added to the [**URL Types**](https://coderwall.com/p/mtjaeq/ios-custom-url-scheme) section (in Info section of your target). 
-Common scheme is: **sightcall**
-
-> Note: Depending on your use case, you may need specific schemes. Don't forget to ask your SightCall contact for them.
+You can learn more about Universal Links at [Apple: Supporting Universal Links](https://developer.apple.com/documentation/xcode/allowing_apps_and_websites_to_link_to_your_content/supporting_universal_links_in_your_app) and a great tutorial at [Ray Wenderlich: Universal Links: Make the Connection](https://www.raywenderlich.com/library?q=universal+links&sort_order=relevance).
 
 #### Background Modes
 
@@ -105,8 +112,11 @@ If you need to be able to continue the call on background, you should setup the 
 * **Voice over IP**
 * **Remote notifications**
 
+<img src="./README.assets/image-20210312134802035.png" alt="image-20210312134802035" style="width:80%;" />
 
-### Instantiation
+
+
+### Code Implementation
 
 First, import `LSUniversalSDK`, have your `SceneDelegate` adopt the `SightCallManager` protocol and initialize the `sightCall` variable:
 
