@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UserDefaults.standard.register(settings: "Settings")
         return true
     }
 
@@ -30,3 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+//extension AppDelegate {
+//    
+//    func setupUserDefaults() {
+//        let ud = UserDefaults.standard
+//        //  "https://guest.sightcall.com/call/6260003ec186e1fd69e3da25fe6b74634edba71d"
+//
+//        ud.setValue("https://guest.sightcall.com/call/", forKey: "CallBaseURL")
+//        ud.setValue("6260003ec186e1fd69e3da25fe6b74634edba71d", forKey: "CodeCallId")
+//        ud.setValue("6260003ec186e1fd69e3da25fe6b74634edba71d", forKey: "ACDCallId")
+//    }
+//}
