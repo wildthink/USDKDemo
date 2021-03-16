@@ -34,6 +34,24 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
+			<string>ACD URL</string>
+			<key>Key</key>
+			<string>acd_rul</string>
+			<key>DefaultValue</key>
+			<string>https://guest.sightcall.com/call/6260003ec186e1fd69e3da25fe6b74634edba71d</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
 			<string>Direct URL</string>
 			<key>Key</key>
 			<string>direct_url</string>
