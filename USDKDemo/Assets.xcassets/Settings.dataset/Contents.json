@@ -1,7 +1,9 @@
 {
   "data" : [
     {
-      "idiom" : "universal"
+      "filename" : "config.json",
+      "idiom" : "universal",
+      "universal-type-identifier" : "public.json"
     }
   ],
   "info" : {

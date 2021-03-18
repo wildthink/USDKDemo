@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>agent_url</string>
 			<key>DefaultValue</key>
-			<string>https://guest.sightcall.com/call/6260003ec186e1fd69e3da25fe6b74634edba71d</string>
+			<string>https://guest.sightcall.com/call/b7cdc700d817ddf86f143675340d0f7a15b46110</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -38,7 +38,7 @@
 			<key>Key</key>
 			<string>acd_rul</string>
 			<key>DefaultValue</key>
-			<string>https://guest.sightcall.com/call/6260003ec186e1fd69e3da25fe6b74634edba71d</string>
+			<string>https://guest.sightcall.com/call/fd2f278610a1c11d1cae3ce6412b4a84d52779fc</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
