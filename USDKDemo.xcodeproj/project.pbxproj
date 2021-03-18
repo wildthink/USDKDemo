@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9662D3612603D95900139F64 /* AutoTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9662D3602603D95900139F64 /* AutoTimer.swift */; };
 		966BBDE72600106D004AA9A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966BBDE62600106C004AA9A7 /* LaunchScreen.storyboard */; };
 		966BBDE9260010BB004AA9A7 /* SightCallSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BBDE8260010BB004AA9A7 /* SightCallSDK.swift */; };
 		966BBDEB26001340004AA9A7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 966BBDEA26001340004AA9A7 /* Settings.bundle */; };
@@ -24,6 +25,7 @@
 		4CA0997340C930F4C63B8A73 /* Pods_USDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_USDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6487725B9722FD8CC6E00917 /* Pods-USDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-USDKDemo.release.xcconfig"; path = "Target Support Files/Pods-USDKDemo/Pods-USDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		69016029C8A9D1C3630F559C /* Pods-USDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-USDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-USDKDemo/Pods-USDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9662D3602603D95900139F64 /* AutoTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTimer.swift; sourceTree = "<group>"; };
 		966BBDE62600106C004AA9A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		966BBDE8260010BB004AA9A7 /* SightCallSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SightCallSDK.swift; path = ../../../SightCall/pub/USDKDemo/USDKDemo/SightCallSDK.swift; sourceTree = "<group>"; };
 		966BBDEA26001340004AA9A7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				96AD420825E40A320030FB93 /* SceneDelegate.swift */,
 				96AD420A25E40A320030FB93 /* ViewController.swift */,
 				966BBDE8260010BB004AA9A7 /* SightCallSDK.swift */,
+				9662D3602603D95900139F64 /* AutoTimer.swift */,
 				966BBDEC260058C1004AA9A7 /* LSUniversalExtensions.swift */,
 				966BBDEE26005916004AA9A7 /* UIKitExtensions.swift */,
 				96AD420C25E40A320030FB93 /* Main.storyboard */,
@@ -222,6 +225,7 @@
 			files = (
 				96AD420B25E40A320030FB93 /* ViewController.swift in Sources */,
 				96AD420725E40A320030FB93 /* AppDelegate.swift in Sources */,
+				9662D3612603D95900139F64 /* AutoTimer.swift in Sources */,
 				966BBDEF26005916004AA9A7 /* UIKitExtensions.swift in Sources */,
 				966BBDED260058C1004AA9A7 /* LSUniversalExtensions.swift in Sources */,
 				966BBDE9260010BB004AA9A7 /* SightCallSDK.swift in Sources */,

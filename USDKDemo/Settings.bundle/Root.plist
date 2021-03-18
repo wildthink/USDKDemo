@@ -36,7 +36,7 @@
 			<key>Title</key>
 			<string>ACD URL</string>
 			<key>Key</key>
-			<string>acd_rul</string>
+			<string>acd_url</string>
 			<key>DefaultValue</key>
 			<string>https://guest.sightcall.com/call/fd2f278610a1c11d1cae3ce6412b4a84d52779fc</string>
 			<key>IsSecure</key>

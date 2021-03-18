@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="G7S-NN-IHy">
             <objects>
-                <viewController id="lwX-cR-IfJ" customClass="ViewController" customModule="MyVisualSupport" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lwX-cR-IfJ" customClass="ViewController" customModule="USDKDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HGr-6j-1la">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Call"/>
                                 <connections>
-                                    <action selector="connect" destination="lwX-cR-IfJ" eventType="touchUpInside" id="6Xg-Sc-TN8"/>
+                                    <action selector="call" destination="lwX-cR-IfJ" eventType="touchUpInside" id="DDv-4f-uxE"/>
                                 </connections>
                             </button>
                         </subviews>
